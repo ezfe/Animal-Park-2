@@ -1,23 +1,29 @@
 import java.util.*;
 import java.io.*;
 
-public class Simulation
-{
+/**
+ * Main Simulation Class
+ * 
+ * @author Ezekiel Elin
+ * @author Unknown Author
+ * @version 11/02/2016
+ */
+public class Simulation {
     public static int SEED = 12345678;
     public File configFile;
     public World world;
     public int maxSteps;
     public int steps;
-    
+
     public static void main(String[] args) {
         String filePath = "config.txt";
         int simulationSteps = 1000;
         SEED = 1;
-        
+
         Simulation sim = new Simulation(filePath, simulationSteps);
         sim.run();
     }
-    
+
     public Simulation(String fp, int s) {
         try {
             this.configFile = new File(fp);
@@ -28,11 +34,11 @@ public class Simulation
         this.maxSteps = s;
         this.steps = 0;
     }
-    
+
     public void setWorld(World w) {
         world = w;
     }
-    
+
     /**
      * Creates world and starts loop of commands
      */
@@ -44,7 +50,7 @@ public class Simulation
             return;
         }
         world.print();
-        
+
         Scanner reader = new Scanner(System.in);
         String line = reader.nextLine();
         while(canRun()) {
@@ -60,7 +66,7 @@ public class Simulation
             } else if(line.equals("r")) {
                 Species.printStatus();
             }
-            
+
             if(line.equals("i")) {
                 world.turn();
                 steps++;
@@ -80,7 +86,7 @@ public class Simulation
         else if(getChangesInPastSteps() == 0)
             System.out.println("Simulation ended because there were no changes in the last 50 turns.");
     }
-    
+
     /**
      * Creates the world, gets size and light values, and adds all species to a list so they can be added to the world
      */
@@ -93,7 +99,7 @@ public class Simulation
         try {
             fileReader = new Scanner(configFile);
         } catch(Exception e) {}
-        
+
         if(fileReader != null) {
             while(fileReader.hasNext()) {
                 String line = fileReader.nextLine();
@@ -108,11 +114,11 @@ public class Simulation
                     String name = words[1];
                     String type = words[2];
                     String symbol = words[3];
-                    
+
                     String[] es = words[4].split(",");
                     List<String> energySources = new ArrayList<String>();
                     for(int i = 0; i < es.length; i++) {energySources.add(es[i]);}
-                    
+
                     double popMedian = Double.parseDouble(words[5].split(",")[0]);
                     double popStd = Double.parseDouble(words[5].split(",")[1]);
                     int initialEnergy = Integer.parseInt(words[5].split(",")[2]);
@@ -121,7 +127,7 @@ public class Simulation
                     int birthEnergy = Integer.parseInt(words[7]);
                     int maxEnergy = Integer.parseInt(words[8]);
                     int livingEnergy = Integer.parseInt(words[9]);
-                    
+
                     //Creates a number of the new species based on the population distribution and adds them to the list of species to be added to the world
                     Species tempSpecies = null;
                     int numToAdd = (int)(popMedian + (popStd * generator.nextGaussian()));
@@ -152,7 +158,7 @@ public class Simulation
             return;
         }
     }
-    
+
     /**
      * Checks the three conditions for ending the sim
      * @return boolean - returns true if the simulation should continue, false if one of the three rules is broken
@@ -167,7 +173,7 @@ public class Simulation
         else
             return true;
     }
-    
+
     /**
      * Counts all species
      * @return int - number of instances of species in the world
@@ -187,7 +193,7 @@ public class Simulation
         }
         return population;
     }
-    
+
     /**
      * Counts changes from birth and death lists
      * @return int - number of change in the last 50 steps

@@ -4,25 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 
-public class SimulationTest
-{
+public class SimulationTest {
     Simulation sim;
     
-    public SimulationTest()
-    {
-    }
-
     /* Called before every test case method. */
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         sim = new Simulation("config.txt", 10);
-    }
-
-    /* Called after every test.case method. */
-    @After
-    public void tearDown()
-    {
     }
     
     @Test

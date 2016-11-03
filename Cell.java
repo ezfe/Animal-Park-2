@@ -1,5 +1,12 @@
-public class Cell
-{
+/**
+ * Cell/tile in the world
+ * 
+ * @author Ezekiel Elin
+ * @author Unknown Author
+ * @version 11/02/2016
+ */
+public class Cell {
+    
     private World world;
     private Animal animal;
     private Plant plant;

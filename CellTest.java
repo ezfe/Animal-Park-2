@@ -4,16 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 
-public class CellTest
-{
+public class CellTest {
     World world;
     Cell cell;
     Species testAnimal;
     
-    public CellTest()
-    {
-    }
-
     /* Called before every test case method. */
     @Before
     public void setUp()
@@ -23,12 +18,6 @@ public class CellTest
         testAnimal = new Carnivore("bear", "b", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0);
     }
 
-    /* Called after every test case method. */
-    @After
-    public void tearDown()
-    {
-    }
-    
     @Test
     public void testGetAdjacent() {
         world.get(3,3).setAnimal((Animal)testAnimal);

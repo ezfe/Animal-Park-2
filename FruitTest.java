@@ -4,27 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 
-public class FruitTest
-{
+public class FruitTest {
     World world;
-    
-    public FruitTest()
-    {
-    }
 
     /* Called before every test case method. */
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         world = new World(5,5,5);
     }
 
-    /* Called after every test case method. */
-    @After
-    public void tearDown()
-    {
-    }
-    
     @Test
     public void testEat() {
         ArrayList<String> energySources = new ArrayList<String>();
@@ -35,7 +23,7 @@ public class FruitTest
         double initEnergy = testFruit.getEnergy();
         assert testFruit.eat() && testFruit.getEnergy() > initEnergy : "Didn't gain energy";
     }
-    
+
     @Test
     public void testDie() {
         Species testEnergy = new Fruit("grape", "g", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0);
@@ -47,7 +35,7 @@ public class FruitTest
         assert testEnergy.die() : "Didn't die of energy";
         assert testAge.die() || testAge.die() : "Didn't die of age"; //Will fail occasionally depending on the Gaussian distribution
     }
-    
+
     @Test
     public void testBirth() {
         Species testBirth = new Fruit("banana", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0);
@@ -55,7 +43,7 @@ public class FruitTest
         testBirth.setCell(world.get(2,2));
         assert testBirth.birth() : "Didn't give birth";
     }
-    
+
     @Test
     public void testMove() {
         Species testMove = new Fruit("banana", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0);
@@ -63,7 +51,7 @@ public class FruitTest
         testMove.setCell(world.get(2,2));
         assert !testMove.move() : "Did move";
     }
-    
+
     @Test
     public void testActivity() {
         ArrayList<String> energySources = new ArrayList<String>();
@@ -100,7 +88,7 @@ public class FruitTest
         testMove.activity();
         assert world.get(2,2).getPlant() != null : "Did move";
     }
-    
+
     public int getPopulation() {
         int pop = 0;
         for(int i = 0; i < world.getHeight(); i++) {

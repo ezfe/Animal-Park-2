@@ -1,7 +1,14 @@
 import java.util.*;
 
-public class World
-{
+/**
+ * Main World Class
+ * 
+ * @author Ezekiel Elin
+ * @author Unknown Author
+ * @version 11/02/2016
+ */
+public class World {
+
     private List<List<Cell>> board;
     private int lightEnergy;
     private int steps;

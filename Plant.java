@@ -1,14 +1,21 @@
 import java.util.*;
 
-public abstract class Plant extends Species
-{
+/**
+ * Plant abstract class
+ * 
+ * @author Ezekiel Elin
+ * @author Unknown Author
+ * @version 11/02/2016
+ */
+public abstract class Plant extends Species {
+
     Random generator;
-    
+
     public Plant(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {    
         super(n, sym, s, dm, ds, be, me, le, ie, pm, ps);
         generator = new Random(Simulation.SEED);
     }
-    
+
     /**
      * This method provides and easy way to enforce the order of behaviors the species can make
      * Each behavior method returns true if it works, which in turn stops any further behaviors from happening that turn
@@ -31,7 +38,7 @@ public abstract class Plant extends Species
             return;
         }
     }
-    
+
     /**
      * Checks if the species doesn't have enough energy or is too old
      * The species is added to the list of deaths at the corresponding turn and species indices
@@ -63,7 +70,7 @@ public abstract class Plant extends Species
         }
         return false;
     }
-    
+
     /**
      * Checks if the species has enough energy and room nearby to give birth
      * The child is added to the list of births at the corresponding turn and species indices
@@ -100,7 +107,7 @@ public abstract class Plant extends Species
         }
         return false;
     }
-    
+
     /**
      * Absorbs light according to the energy level dictated by the config file
      * @return boolean - true because plants will absorb energy if given the opportunity
@@ -112,7 +119,7 @@ public abstract class Plant extends Species
         }
         return true;
     }
-    
+
     /**
      * Plants never move
      * @return boolean - false because plants don't move

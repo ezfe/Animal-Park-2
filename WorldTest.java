@@ -4,14 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 
-public class WorldTest
-{
+public class WorldTest {
     World world;
     
-    public WorldTest()
-    {
-    }
-
     /* Called before every test case method. */
     @Before
     public void setUp()
@@ -19,12 +14,6 @@ public class WorldTest
         world = new World(5,5,5);
     }
 
-    /* Called after every test case method. */
-    @After
-    public void tearDown()
-    {
-    }
-    
     @Test
     public void testTurn() {
         testActivityCarnivore();

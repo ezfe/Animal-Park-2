@@ -1,14 +1,20 @@
 import java.util.*;
 
-public abstract class Animal extends Species
-{
+/**
+ * Animal abstract class
+ * 
+ * @author Ezekiel Elin
+ * @author Unknown Author
+ * @version 11/02/2016
+ */
+public abstract class Animal extends Species {
     Random generator;
-    
+
     public Animal(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {    
         super(n, sym, s, dm, ds, be, me, le, ie, pm, ps);
         generator = new Random(Simulation.SEED);
     }
-    
+
     /**
      * This method provides and easy way to enforce the order of behaviors the species can make
      * Each behavior method returns true if it works, which in turn stops any further behaviors from happening that turn
@@ -31,7 +37,7 @@ public abstract class Animal extends Species
             return;
         }
     }
-    
+
     /**
      * Checks if the species doesn't have enough energy or is too old
      * The species is added to the list of deaths at the corresponding turn and species indices
@@ -63,7 +69,7 @@ public abstract class Animal extends Species
         }
         return false;
     }
-    
+
     /**
      * Checks if the species has enough energy and room nearby to give birth
      * The child is added to the list of births at the corresponding turn and species indices
@@ -102,9 +108,9 @@ public abstract class Animal extends Species
         }
         return false;
     }
-    
+
     public abstract boolean eat();
-    
+
     /**
      * Looks at adjacent cells and checks if any animal it can eat is there
      * If it finds a prey, it is removed from the board and added to the death list
@@ -124,10 +130,10 @@ public abstract class Animal extends Species
                                 this.setEnergy(this.getMaxEnergy());
                             }
                             int curSteps = prey.getCell().getWorld().getSteps();
-                            
+
                             ArrayList<ArrayList<Integer>> deathAL = Species.getDeaths();
                             int index = Species.getSpecies().indexOf(prey.getName());
-                            
+
                             //System.out.println("Death by Eating");
                             try {
                                 deathAL.get(curSteps).set(index, deathAL.get(curSteps).get(index) + 1);
@@ -142,23 +148,23 @@ public abstract class Animal extends Species
         }
         return false;
     }
-    
+
     /**
      * Looks at current cell and checks if any plant it can eat is there
      * If it finds a prey, it is removed from the board and added to the death list
      * @return boolean - true if an acceptable plant is found and eaten, false otherwise
      */
     public boolean eatPlant() {
-       Cell preyCell = this.getCell();
+        Cell preyCell = this.getCell();
         if(preyCell != null) {
             Plant prey = preyCell.getPlant();
             if(prey != null && this.energySources.contains(prey.getName())) {
                 this.setEnergy(this.getEnergy() + prey.getEnergy());
                 int curSteps = prey.getCell().getWorld().getSteps();
-                
+
                 ArrayList<ArrayList<Integer>> deathAL = Species.getDeaths();
                 int index = Species.getSpecies().indexOf(prey.getName());
-                
+
                 //System.out.println("Death by Eating");
                 try {
                     deathAL.get(curSteps).set(index, deathAL.get(curSteps).get(index) + 1);
@@ -170,7 +176,7 @@ public abstract class Animal extends Species
         }
         return false;
     }
-    
+
     /**
      * If all else fails, the animal tries to move to an adjacent space
      * @return boolean - true if the animal moves, false otherwise

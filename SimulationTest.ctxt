@@ -1,18 +1,13 @@
 #BlueJ class context
 comment0.params=
-comment0.target=SimulationTest()
+comment0.target=void\ setUp()
+comment0.text=Called\ before\ every\ test\ case\ method.
 comment1.params=
-comment1.target=void\ setUp()
-comment1.text=Called\ before\ every\ test\ case\ method.
+comment1.target=void\ testFileInit()
 comment2.params=
-comment2.target=void\ tearDown()
-comment2.text=Called\ after\ every\ test.case\ method.
+comment2.target=void\ testCanRun()
 comment3.params=
-comment3.target=void\ testFileInit()
+comment3.target=void\ testGetPop()
 comment4.params=
-comment4.target=void\ testCanRun()
-comment5.params=
-comment5.target=void\ testGetPop()
-comment6.params=
-comment6.target=void\ testChanges()
-numComments=7
+comment4.target=void\ testChanges()
+numComments=5

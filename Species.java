@@ -1,8 +1,14 @@
 import java.util.*;
 import java.io.*;
 
-public abstract class Species
-{
+/**
+ * Top-level representation of a species
+ * 
+ * @author Ezekiel Elin
+ * @author Uknown Author
+ * @version 11/02/2016
+ */
+public abstract class Species {
     //These static variables keep track of all of the species and the births and deaths by turn for all of them
     protected static World staticWorld = new World(0,0,0);
     protected static ArrayList<String> species = new ArrayList<String>();
@@ -21,10 +27,10 @@ public abstract class Species
     protected double initialEnergy;
     protected double popMedian;
     protected double popStd;
-    
+
     protected double energy;
     protected int age;
-    
+
     public Species(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {
         this.name = n;
         this.symbol = sym;
@@ -37,29 +43,29 @@ public abstract class Species
         this.initialEnergy = ie;
         this.popMedian = pm;
         this.popStd = ps;
-        
+
         this.energy = ie;
         this.age = 0;
-        
+
         if(!species.contains(n)) {
             species.add(n);
         }
     }
-    
+
     public abstract void activity();
-    
+
     public abstract boolean die();
-    
+
     public abstract boolean birth();
-    
+
     public abstract boolean eat();
-    
+
     public abstract boolean move();
-    
+
     public static void setStaticWorld(World w) {
         staticWorld = w;
     }
-    
+
     /**
      * Prints births and deaths between turns when the command is c
      */
@@ -70,7 +76,7 @@ public abstract class Species
             System.out.println();
         }
     }
-    
+
     /**
      * Prints population, median energy, and median age when the command is r
      */
@@ -100,7 +106,7 @@ public abstract class Species
                     }
                 }
             }
-            
+
             double medEnergy = 0.0;
             Collections.sort(energies);
             if(energies.size() > 0) {
@@ -110,7 +116,7 @@ public abstract class Species
                     medEnergy = energies.get((int)(energies.size()/2));
                 }
             }
-            
+
             int medAge = 0;
             Collections.sort(ages);
             if(ages.size() > 0) {
@@ -120,7 +126,7 @@ public abstract class Species
                     medAge = ages.get((int)(ages.size()/2));
                 }
             }
-            
+
             System.out.println(species.get(i) + " Population: " + population);
             if(writer != null) {
                 writer.print("," + population);
@@ -135,7 +141,7 @@ public abstract class Species
             writer.close();
         }
     }
-    
+
     /**
      * Prints data every 50 turns and at the end
      * @param integer start - if start is 50, it prints data from the last 50 steps. otherwise, it prints data from the whole sim
@@ -164,20 +170,20 @@ public abstract class Species
             if(writer != null && start == 50) {
                 writer.print("," + population);
             }
-            
+
             int startIndex = 0;
             String message = " since the start of the simulation (" + births.size() + " turns)";
             if(start == 50) {
                 startIndex = births.size() - 50;
                 message = " in the last 50 steps";
             }
-            
+
             int birthsSince = 0;
             for(int j = startIndex; j < births.size(); j++) {
                 birthsSince += births.get(j).get(i);
             }
             System.out.println(species.get(i) + " Births" + message + ": " + birthsSince);
-            
+
             int deathsSince = 0;
             for(int j = startIndex; j < deaths.size(); j++) {
                 deathsSince += deaths.get(j).get(i);
@@ -194,55 +200,55 @@ public abstract class Species
             writer.close();
         }
     }
-    
+
     public static ArrayList<ArrayList<Integer>> getBirths() {
-       return births; 
+        return births; 
     }
-    
+
     public static ArrayList<ArrayList<Integer>> getDeaths() {
-       return deaths; 
+        return deaths; 
     }
-    
+
     public static void setBirths(ArrayList<ArrayList<Integer>> a) {
-       births = a; 
+        births = a; 
     }
-    
+
     public static void setDeaths(ArrayList<ArrayList<Integer>> a) {
-       deaths = a;
+        deaths = a;
     }
-    
+
     public static ArrayList<String> getSpecies() {
-       return species; 
+        return species; 
     }
-    
+
     public String getRepresentation() {
         return this.symbol;
     };
-    
+
     public Cell getCell() {
         return this.cell;
     }
-    
+
     public void setCell(Cell c) {
         this.cell = c;
     }
-    
+
     public double getEnergy() {
         return this.energy;
     }
-    
+
     public void setEnergy(double e) {
         this.energy = e;
     }
-    
+
     public double getMaxEnergy() {
         return this.maxEnergy;
     }
-    
+
     public int getAge() {
         return this.age;
     }
-    
+
     public String getName() {
         return this.name;
     }

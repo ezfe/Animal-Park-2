@@ -4,27 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 
-public class OmnivoreTest
-{
+public class OmnivoreTest {
     World world;
-    
-    public OmnivoreTest()
-    {
-    }
 
     /* Called before every test case method. */
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         world =  new World(5,5,5);
     }
 
-    /* Called after every test case method. */
-    @After
-    public void tearDown()
-    {
-    }
-    
     @Test
     public void testEat() {
         ArrayList<String> energySources = new ArrayList<String>();
@@ -36,7 +24,7 @@ public class OmnivoreTest
         world.get(2,2).setAnimal((Animal)testAnimal);
         testAnimal.setCell(world.get(2,2));
         assert testAnimal.eat() : "Didn't eat plant";
-        
+
         world = new World(5,5,5);
         energySources = new ArrayList<String>();
         energySources.add("rabbit");
@@ -48,7 +36,7 @@ public class OmnivoreTest
         testAnimal.setCell(world.get(2,2));
         assert testAnimal.eat() : "Didn't eat animal";
     }
-    
+
     @Test
     public void testDie() {
         Species testEnergy = new Omnivore("tiger", "t", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0);
@@ -60,7 +48,7 @@ public class OmnivoreTest
         assert testEnergy.die() : "Didn't die of energy";
         assert testAge.die() || testAge.die() : "Didn't die of age"; //Will fail occasionally depending on the Gaussian distribution
     }
-    
+
     @Test
     public void testBirth() {
         Species testBirth = new Omnivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0);
@@ -68,7 +56,7 @@ public class OmnivoreTest
         testBirth.setCell(world.get(2,2));
         assert testBirth.birth() : "Didn't give birth";
     }
-    
+
     @Test
     public void testMove() {
         Species testMove = new Omnivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0);
@@ -76,7 +64,7 @@ public class OmnivoreTest
         testMove.setCell(world.get(2,2));
         assert testMove.move() : "Didn't move";
     }
-    
+
     @Test
     public void testActivity() {
         ArrayList<String> energySources = new ArrayList<String>();
@@ -89,7 +77,7 @@ public class OmnivoreTest
         testAnimal.setCell(world.get(2,2));
         testAnimal.activity();
         assert getPopulation() == 1 : "Didn't eat animal";
-        
+
         world = new World(5,5,5);
         energySources = new ArrayList<String>();
         energySources.add("rabbit");
@@ -127,7 +115,7 @@ public class OmnivoreTest
         testMove.activity();
         assert world.get(2,2).getAnimal() == null : "Didn't move";
     }
-    
+
     public int getPopulation() {
         int pop = 0;
         for(int i = 0; i < world.getHeight(); i++) {

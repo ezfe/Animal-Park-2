@@ -1,7 +1,13 @@
 import java.util.*;
 
-public class Omnivore extends Animal
-{
+/**
+ * Omnivore class
+ * 
+ * @author Ezekiel Elin
+ * @author Unknown Author
+ * @version 11/02/2016
+ */
+public class Omnivore extends Animal {
     public Omnivore(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {    
         super(n, sym, s, dm, ds, be, me, le, ie, pm, ps);
     }
