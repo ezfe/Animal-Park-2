@@ -118,6 +118,11 @@ public class World {
             int col = generator.nextInt(this.board.get(0).size());
             Cell cell = this.board.get(row).get(col);
             
+            /* cannot use mountain spaces */
+            if (cell.isMountain()) {
+                continue;
+            }
+            
             if(s instanceof Animal) {
                 if(cell.getAnimal() == null) {
                     cell.setAnimal((Animal)s);

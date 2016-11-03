@@ -80,10 +80,9 @@ public abstract class Animal extends Species {
             //This loops through the adjacent cells, denoted as ranging from -1 to 1 in the horizontal and vertical directions in relation to the current cell
             for(int i = -1; i <= 1; i++) {
                 for(int j = -1; j <= 1; j++) {
-                    Cell birthCell = this.getCell().getAdjacent(i,j); //Get adjacent uses the -1 to 1 range to find the cell
+                    Cell place = this.getCell().getAdjacent(i,j); //Get adjacent uses the -1 to 1 range to find the cell
                     if(i == 0 && j == 0) {}
-                    else if(birthCell != null && birthCell.getAnimal() == null) {
-                        Cell place = this.getCell().getAdjacent(i,j);
+                    else if(place != null && !place.isMountain() && place.getAnimal() == null) {
                         double parentEnergy = this.getEnergy()/2.0; //Important to halve the parent's energy to give to the child
                         this.setEnergy(parentEnergy);
                         Species child = null;
@@ -184,7 +183,7 @@ public abstract class Animal extends Species {
     public boolean move() {
         for(int i = 0; i < 20; i++) {
             Cell temp = this.getCell().getAdjacent(generator.nextInt(3)-1,generator.nextInt(3)-1);
-            if(temp != null && temp.getAnimal() == null) {
+            if(temp != null && !temp.isMountain() && temp.getAnimal() == null) {
                 temp.setAnimal(this);
                 this.getCell().setAnimal(null);
                 this.setCell(temp);

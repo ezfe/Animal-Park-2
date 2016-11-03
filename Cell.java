@@ -10,9 +10,15 @@ public class Cell {
     private World world;
     private Animal animal;
     private Plant plant;
+    private boolean mountain = false;
     
     public Cell(World w) {
         this.world = w;
+    }
+    
+    public Cell(World w, boolean mountain) {
+        this.world = w;
+        this.mountain = mountain;
     }
     
     public Cell(Animal a) {
@@ -51,19 +57,31 @@ public class Cell {
         return this.animal;
     }
     
-    public void setAnimal(Animal a) {
+    public boolean setAnimal(Animal a) {
+        if (this.mountain) {
+            return false;
+        }
         this.animal = a;
+        return true;
     }
     
     public Plant getPlant() {
         return this.plant;
     }
     
-    public void setPlant(Plant p) {
+    public boolean setPlant(Plant p) {
+        if (this.mountain) {
+            return false;
+        }
         this.plant = p;
+        return true;
     }
     
     public World getWorld() {
         return this.world;
+    }
+    
+    public boolean isMountain() {
+        return this.mountain;
     }
 }

@@ -83,8 +83,7 @@ public abstract class Plant extends Species {
                 for(int j = -1; j <= 1; j++) {
                     Cell place = this.getCell().getAdjacent(i,j); //Get adjacent uses the -1 to 1 range to find the cell
                     if(i == 0 && j == 0) {}
-                    else if(place != null && place.getPlant() == null) {
-                        place = this.getCell().getAdjacent(i,j);
+                    else if(place != null && !place.isMountain() && place.getPlant() == null) {
                         double parentEnergy = this.getEnergy()/2.0; //Important to halve the parent's energy to give to the child
                         this.setEnergy(parentEnergy);
                         Species child = null;
