@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=w
+comment0.target=Cell(World)
+comment1.params=a
+comment1.target=Cell(Animal)
+comment2.params=p
+comment2.target=Cell(Plant)
+comment3.params=a\ p
+comment3.target=Cell(Animal,\ Plant)
+comment4.params=r\ c
+comment4.target=Cell\ getAdjacent(int,\ int)
+comment4.text=\n\ Gets\ bordering\ cell\ from\ given\ relative\ position\n\ @param\ int\ r\ -\ r\ is\ the\ vertical\ position\ relative\ to\ the\ current\ cell,\ int\ c\ -\ c\ is\ the\ horizontal\ position\ relative\ to\ the\ current\ cell\n\ @return\ Cell\ -\ a\ cell\ that\ is\ in\ the\ given\ position\ relative\ to\ the\ current\ cell,\ null\ if\ not\ found\ or\ non\ existent\n
+comment5.params=
+comment5.target=Animal\ getAnimal()
+comment6.params=a
+comment6.target=void\ setAnimal(Animal)
+comment7.params=
+comment7.target=Plant\ getPlant()
+comment8.params=p
+comment8.target=void\ setPlant(Plant)
+comment9.params=
+comment9.target=World\ getWorld()
+numComments=10

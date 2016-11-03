@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment1.params=fp\ s
+comment1.target=Simulation(java.lang.String,\ int)
+comment2.params=w
+comment2.target=void\ setWorld(World)
+comment3.params=
+comment3.target=void\ run()
+comment3.text=\n\ Creates\ world\ and\ starts\ loop\ of\ commands\n
+comment4.params=
+comment4.target=void\ initWorld()
+comment4.text=\n\ Creates\ the\ world,\ gets\ size\ and\ light\ values,\ and\ adds\ all\ species\ to\ a\ list\ so\ they\ can\ be\ added\ to\ the\ world\n
+comment5.params=
+comment5.target=boolean\ canRun()
+comment5.text=\n\ Checks\ the\ three\ conditions\ for\ ending\ the\ sim\n\ @return\ boolean\ -\ returns\ true\ if\ the\ simulation\ should\ continue,\ false\ if\ one\ of\ the\ three\ rules\ is\ broken\n
+comment6.params=
+comment6.target=int\ getPopulationOfWorld()
+comment6.text=\n\ Counts\ all\ species\n\ @return\ int\ -\ number\ of\ instances\ of\ species\ in\ the\ world\n
+comment7.params=
+comment7.target=int\ getChangesInPastSteps()
+comment7.text=\n\ Counts\ changes\ from\ birth\ and\ death\ lists\n\ @return\ int\ -\ number\ of\ change\ in\ the\ last\ 50\ steps\n
+numComments=8

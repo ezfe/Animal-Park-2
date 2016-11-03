@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=n\ sym\ s\ dm\ ds\ be\ me\ le\ ie\ pm\ ps
+comment0.target=Plant(java.lang.String,\ java.lang.String,\ java.util.List,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double)
+comment1.params=
+comment1.target=void\ activity()
+comment1.text=\n\ This\ method\ provides\ and\ easy\ way\ to\ enforce\ the\ order\ of\ behaviors\ the\ species\ can\ make\n\ Each\ behavior\ method\ returns\ true\ if\ it\ works,\ which\ in\ turn\ stops\ any\ further\ behaviors\ from\ happening\ that\ turn\n
+comment2.params=
+comment2.target=boolean\ die()
+comment2.text=\n\ Checks\ if\ the\ species\ doesn't\ have\ enough\ energy\ or\ is\ too\ old\n\ The\ species\ is\ added\ to\ the\ list\ of\ deaths\ at\ the\ corresponding\ turn\ and\ species\ indices\n\ @return\ boolean\ -\ true\ if\ the\ animal\ dies,\ false\ otherwise\n
+comment3.params=
+comment3.target=boolean\ birth()
+comment3.text=\n\ Checks\ if\ the\ species\ has\ enough\ energy\ and\ room\ nearby\ to\ give\ birth\n\ The\ child\ is\ added\ to\ the\ list\ of\ births\ at\ the\ corresponding\ turn\ and\ species\ indices\n\ @return\ boolean\ -\ true\ if\ the\ animal\ gives\ birth,\ false\ otherwise\n
+comment4.params=
+comment4.target=boolean\ eat()
+comment4.text=\n\ Absorbs\ light\ according\ to\ the\ energy\ level\ dictated\ by\ the\ config\ file\n\ @return\ boolean\ -\ true\ because\ plants\ will\ absorb\ energy\ if\ given\ the\ opportunity\n
+comment5.params=
+comment5.target=boolean\ move()
+comment5.text=\n\ Plants\ never\ move\n\ @return\ boolean\ -\ false\ because\ plants\ don't\ move\n
+numComments=6

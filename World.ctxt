@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=m\ n\ l
+comment0.target=World(int,\ int,\ int)
+comment1.params=
+comment1.target=int\ getLightEnergy()
+comment2.params=row\ col
+comment2.target=Cell\ get(int,\ int)
+comment3.params=
+comment3.target=int\ getHeight()
+comment4.params=
+comment4.target=int\ getWidth()
+comment5.params=
+comment5.target=int\ getSteps()
+comment6.params=
+comment6.target=void\ turn()
+comment6.text=\n\ Goes\ through\ each\ cell\ and\ runs\ the\ activities\ for\ each\ species\n\ Also\ adds\ a\ new\ element\ to\ the\ birth\ and\ death\ lists\ so\ they\ can\ be\ tracker\ for\ the\ turn\n
+comment7.params=
+comment7.target=void\ print()
+comment7.text=\n\ Prints\ the\ board\ in\ an\ easy\ to\ view\ way\n
+comment8.params=s
+comment8.target=void\ randomAddToWorld(Species)
+comment8.text=\n\ Takes\ a\ species\ and\ generates\ random\ coordinates\ until\ it\ finds\ an\ empty\ cell\ for\ it\n\ @param\ Species\ s\ -\ the\ species\ that\ should\ be\ randomly\ added\ to\ the\ world\n
+numComments=9

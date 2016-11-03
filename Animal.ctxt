@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=n\ sym\ s\ dm\ ds\ be\ me\ le\ ie\ pm\ ps
+comment0.target=Animal(java.lang.String,\ java.lang.String,\ java.util.List,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double)
+comment1.params=
+comment1.target=void\ activity()
+comment1.text=\n\ This\ method\ provides\ and\ easy\ way\ to\ enforce\ the\ order\ of\ behaviors\ the\ species\ can\ make\n\ Each\ behavior\ method\ returns\ true\ if\ it\ works,\ which\ in\ turn\ stops\ any\ further\ behaviors\ from\ happening\ that\ turn\n
+comment2.params=
+comment2.target=boolean\ die()
+comment2.text=\n\ Checks\ if\ the\ species\ doesn't\ have\ enough\ energy\ or\ is\ too\ old\n\ The\ species\ is\ added\ to\ the\ list\ of\ deaths\ at\ the\ corresponding\ turn\ and\ species\ indices\n\ @return\ boolean\ -\ returns\ true\ if\ the\ animal\ dies,\ false\ otherwise\n
+comment3.params=
+comment3.target=boolean\ birth()
+comment3.text=\n\ Checks\ if\ the\ species\ has\ enough\ energy\ and\ room\ nearby\ to\ give\ birth\n\ The\ child\ is\ added\ to\ the\ list\ of\ births\ at\ the\ corresponding\ turn\ and\ species\ indices\n\ @return\ boolean\ -\ true\ if\ animal\ gives\ birth,\ false\ otherwise\n
+comment4.params=
+comment4.target=boolean\ eat()
+comment5.params=
+comment5.target=boolean\ eatAnimal()
+comment5.text=\n\ Looks\ at\ adjacent\ cells\ and\ checks\ if\ any\ animal\ it\ can\ eat\ is\ there\n\ If\ it\ finds\ a\ prey,\ it\ is\ removed\ from\ the\ board\ and\ added\ to\ the\ death\ list\n\ @return\ boolean\ -\ true\ if\ an\ acceptable\ animal\ is\ found\ and\ eaten,\ false\ otherwise\n
+comment6.params=
+comment6.target=boolean\ eatPlant()
+comment6.text=\n\ Looks\ at\ current\ cell\ and\ checks\ if\ any\ plant\ it\ can\ eat\ is\ there\n\ If\ it\ finds\ a\ prey,\ it\ is\ removed\ from\ the\ board\ and\ added\ to\ the\ death\ list\n\ @return\ boolean\ -\ true\ if\ an\ acceptable\ plant\ is\ found\ and\ eaten,\ false\ otherwise\n
+comment7.params=
+comment7.target=boolean\ move()
+comment7.text=\n\ If\ all\ else\ fails,\ the\ animal\ tries\ to\ move\ to\ an\ adjacent\ space\n\ @return\ boolean\ -\ true\ if\ the\ animal\ moves,\ false\ otherwise\n
+numComments=8
