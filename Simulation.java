@@ -91,9 +91,14 @@ public class Simulation {
      * Creates the world, gets size and light values, and adds all species to a list so they can be added to the world
      */
     public void initWorld() {
-        int height = 0,width = 0,light = 0;
+        int height = 0;
+        int width = 0;
+        int light = 0;
+        
         List<Species> species = new ArrayList<Species>();
+        
         Random generator = new Random(SEED);
+        
         //Creates the file scanner
         Scanner fileReader = null;
         try {
@@ -114,7 +119,7 @@ public class Simulation {
                     String name = words[1];
                     String type = words[2];
                     String symbol = words[3];
-
+                    
                     String[] es = words[4].split(",");
                     List<String> energySources = new ArrayList<String>();
                     for(int i = 0; i < es.length; i++) {energySources.add(es[i]);}
@@ -126,8 +131,11 @@ public class Simulation {
                     double deathStd = Double.parseDouble(words[6].split(",")[1]);
                     int birthEnergy = Integer.parseInt(words[7]);
                     int maxEnergy = Integer.parseInt(words[8]);
-                    int livingEnergy = Integer.parseInt(words[9]);
-
+                    int moveRange = Integer.parseInt(words[9]);
+                    int detectRange = Integer.parseInt(words[10]);
+                    int livingEnergy = Integer.parseInt(words[11]);
+                    int hungerThreshold = integer.parseInt(words[12]);
+                    
                     //Creates a number of the new species based on the population distribution and adds them to the list of species to be added to the world
                     Species tempSpecies = null;
                     int numToAdd = (int)(popMedian + (popStd * generator.nextGaussian()));
