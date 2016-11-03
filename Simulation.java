@@ -94,11 +94,11 @@ public class Simulation {
         int height = 0;
         int width = 0;
         int light = 0;
-        
+
         List<Species> species = new ArrayList<Species>();
-        
+
         Random generator = new Random(SEED);
-        
+
         //Creates the file scanner
         Scanner fileReader = null;
         try {
@@ -119,7 +119,7 @@ public class Simulation {
                     String name = words[1];
                     String type = words[2];
                     String symbol = words[3];
-                    
+
                     String[] es = words[4].split(",");
                     List<String> energySources = new ArrayList<String>();
                     for(int i = 0; i < es.length; i++) {energySources.add(es[i]);}
@@ -135,7 +135,7 @@ public class Simulation {
                     int detectRange = Integer.parseInt(words[10]);
                     int livingEnergy = Integer.parseInt(words[11]);
                     int hungerThreshold = integer.parseInt(words[12]);
-                    
+
                     //Creates a number of the new species based on the population distribution and adds them to the list of species to be added to the world
                     Species tempSpecies = null;
                     int numToAdd = (int)(popMedian + (popStd * generator.nextGaussian()));
@@ -153,6 +153,15 @@ public class Simulation {
                         }
                         species.add(tempSpecies);
                     }
+                } else if (words[0].equals("mountain")) {
+                    String[] points = words[1].split(",");
+                    
+                    int x1 = Integer.parseInt(points[0]);
+                    int y1 = Integer.parseInt(points[1]);
+                    int x2 = Integer.parseInt(points[2]);
+                    int y2 = Integer.parseInt(points[3]);
+                    
+                    
                 }
             }
             //Creates world and adds species to it
