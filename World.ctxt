@@ -1,14 +1,14 @@
 #BlueJ class context
-comment0.params=m\ n\ l
+comment0.params=width\ height\ light
 comment0.target=World(int,\ int,\ int)
 comment1.params=
 comment1.target=int\ getLightEnergy()
-comment2.params=row\ col
+comment2.params=x\ y
 comment2.target=Cell\ get(int,\ int)
 comment3.params=
-comment3.target=int\ getHeight()
+comment3.target=int\ getWidth()
 comment4.params=
-comment4.target=int\ getWidth()
+comment4.target=int\ getHeight()
 comment5.params=
 comment5.target=int\ getSteps()
 comment6.params=

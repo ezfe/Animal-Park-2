@@ -49,6 +49,9 @@ public class Simulation {
             System.out.println("Unable to read config file.");
             return;
         }
+        
+        
+        
         world.print();
 
         Scanner reader = new Scanner(System.in);
@@ -91,12 +94,13 @@ public class Simulation {
      * Creates the world, gets size and light values, and adds all species to a list so they can be added to the world
      */
     public void initWorld() {
-        int height = 0;
         int width = 0;
+        int height = 0;
         int light = 0;
 
-        List<Species> species = new ArrayList<Species>();
-
+        ArrayList<Species> species = new ArrayList<>();
+        ArrayList<Mountain> mountains = new ArrayList<>();
+        
         Random generator = new Random(SEED);
 
         //Creates the file scanner
@@ -134,7 +138,7 @@ public class Simulation {
                     int moveRange = Integer.parseInt(words[9]);
                     int detectRange = Integer.parseInt(words[10]);
                     int livingEnergy = Integer.parseInt(words[11]);
-                    int hungerThreshold = integer.parseInt(words[12]);
+                    int hungerThreshold = Integer.parseInt(words[12]);
 
                     //Creates a number of the new species based on the population distribution and adds them to the list of species to be added to the world
                     Species tempSpecies = null;
@@ -161,11 +165,21 @@ public class Simulation {
                     int x2 = Integer.parseInt(points[2]);
                     int y2 = Integer.parseInt(points[3]);
                     
-                    
+                    mountains.add(new Mountain(x1, y1, x2, y2));
                 }
             }
             //Creates world and adds species to it
-            world = new World(height,width,light);
+            world = new World(width,height,light);
+            for(int i = 0; i < mountains.size(); i++) {
+                mountains.get(i).populate(world);
+            }
+            
+            world.get(8,2).flag = true;
+            ArrayList<Cell> valids = world.get(8, 2).getLOSCells(10, false);
+            for(int i = 0; i < valids.size(); i++) {
+                valids.get(i).flag = true;
+            }
+            
             Species.setStaticWorld(world);
             for(int i = 0; i < species.size(); i++) {
                 world.randomAddToWorld(species.get(i));
@@ -197,8 +211,8 @@ public class Simulation {
      */
     public int getPopulationOfWorld() {
         int population = 0;
-        for(int i = 0; i < world.getHeight(); i++) {
-            for(int j = 0; j < world.getWidth(); j++) {
+        for(int i = 0; i < world.getWidth(); i++) {
+            for(int j = 0; j < world.getHeight(); j++) {
                 Cell cell = world.get(i,j);
                 if(cell != null && cell.getAnimal() != null) {
                     population++;

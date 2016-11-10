@@ -92,8 +92,8 @@ public abstract class Species {
             int population = 0;
             ArrayList<Double> energies = new ArrayList<Double>();
             ArrayList<Integer> ages = new ArrayList<Integer>();
-            for(int j = 0; j < staticWorld.getHeight(); j++) {
-                for(int k = 0; k < staticWorld.getWidth(); k++) {
+            for(int j = 0; j < staticWorld.getWidth(); j++) {
+                for(int k = 0; k < staticWorld.getHeight(); k++) {
                     Cell cell = staticWorld.get(j,k);
                     if(cell != null && cell.getAnimal() != null && cell.getAnimal().getName() == species.get(i)) {
                         population++;
@@ -156,8 +156,8 @@ public abstract class Species {
         }
         for(int i = 0; i < species.size(); i++) {
             int population = 0;
-            for(int j = 0; j < staticWorld.getHeight(); j++) {
-                for(int k = 0; k < staticWorld.getWidth(); k++) {
+            for(int j = 0; j < staticWorld.getWidth(); j++) {
+                for(int k = 0; k < staticWorld.getHeight(); k++) {
                     Cell cell = staticWorld.get(j,k);
                     if(cell != null && cell.getAnimal() != null && cell.getAnimal().getName() == species.get(i)) {
                         population++;

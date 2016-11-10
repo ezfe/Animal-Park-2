@@ -13,14 +13,15 @@ public class World {
     private int lightEnergy;
     private int steps;
     
-    public World(int m, int n, int l) {
-        lightEnergy = l;
+    public World(int width, int height, int light) {
+        lightEnergy = light;
         steps = 0;
         board = new ArrayList<List<Cell>>();
-        for(int i = 0; i < m; i++) {
+        for(int i = 0; i < width; i++) {
             board.add(new ArrayList<Cell>());
-            for(int j = 0; j < n; j++) {
+            for(int j = 0; j < height; j++) {
                 board.get(i).add(new Cell(this));
+                board.get(i).get(j).setLocation(new Point(i, j));
             }
         }
     }
@@ -29,15 +30,15 @@ public class World {
         return lightEnergy;
     }
     
-    public Cell get(int row, int col) {
-        return this.board.get(row).get(col);
-    }
-    
-    public int getHeight() {
-        return this.board.size();
+    public Cell get(int x, int y) {
+        return this.board.get(x).get(y);
     }
     
     public int getWidth() {
+        return this.board.size();
+    }
+    
+    public int getHeight() {
         return this.board.get(0).size();
     }
     
@@ -64,9 +65,9 @@ public class World {
             }
         }
         for(int i = 0; i < board.size(); i++) {
-            List<Cell> row = board.get(i);
-            for(int j = 0; j < row.size(); j++) {
-                Cell cell = row.get(j);
+            List<Cell> column = board.get(i);
+            for(int j = 0; j < column.size(); j++) {
+                Cell cell = column.get(j);
                 if(cell.getAnimal() != null) {
                     cell.getAnimal().activity();
                 }
@@ -82,12 +83,17 @@ public class World {
      * Prints the board in an easy to view way
      */
     public void print() {
-        for(int i = 0; i < board.size(); i++) {
-            List<Cell> row = board.get(i);
+        for(int y = 0; y < this.getHeight(); y++) {
             System.out.print("|");
-            for(int j = 0; j < row.size(); j++) {
-                Cell cell = row.get(j);
+            for(int x = 0; x < this.getWidth(); x++) {
+                Cell cell = this.get(x, y);
                 String message = "";
+                if (cell.isMountain()) {
+                    message += "MNT";
+                }
+                if (cell.flag) {
+                    message += "!!!";
+                }
                 if(cell.getAnimal() != null) {
                     message += cell.getAnimal().getRepresentation();
                 }
@@ -114,9 +120,9 @@ public class World {
         int count = 0; //Prevents infinite loop in case more species are trying to be added than there are spaces for them
         while(!found && count < 10000) {
             count++;
-            int row = generator.nextInt(this.board.size());
-            int col = generator.nextInt(this.board.get(0).size());
-            Cell cell = this.board.get(row).get(col);
+            int x = generator.nextInt(this.board.size());
+            int y = generator.nextInt(this.board.get(0).size());
+            Cell cell = this.board.get(x).get(y);
             
             /* cannot use mountain spaces */
             if (cell.isMountain()) {
