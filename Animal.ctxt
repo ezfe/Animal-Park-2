@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=n\ sym\ s\ dm\ ds\ be\ me\ le\ ie\ pm\ ps
-comment0.target=Animal(java.lang.String,\ java.lang.String,\ java.util.List,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double)
+comment0.params=n\ sym\ s\ dm\ ds\ be\ me\ le\ ie\ pm\ ps\ mr\ dr\ hr
+comment0.target=Animal(java.lang.String,\ java.lang.String,\ java.util.List,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double)
 comment1.params=
 comment1.target=void\ activity()
 comment1.text=\n\ This\ method\ provides\ and\ easy\ way\ to\ enforce\ the\ order\ of\ behaviors\ the\ species\ can\ make\n\ Each\ behavior\ method\ returns\ true\ if\ it\ works,\ which\ in\ turn\ stops\ any\ further\ behaviors\ from\ happening\ that\ turn\n

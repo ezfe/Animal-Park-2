@@ -28,10 +28,22 @@ public abstract class Species {
     protected double popMedian;
     protected double popStd;
 
+    protected double moveRange;
+    protected double detectRange;
+    protected double hungerThreshold;
+    
     protected double energy;
     protected int age;
 
-    public Species(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {
+    public String getName() {
+        return this.name;
+    }
+    
+    public boolean energySourcesContains(String s) {
+        return this.energySources.contains(s);
+    }
+    
+    public Species(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {
         this.name = n;
         this.symbol = sym;
         this.energySources = s;
@@ -47,6 +59,10 @@ public abstract class Species {
         this.energy = ie;
         this.age = 0;
 
+        this.moveRange = mr;
+        this.detectRange = dr;
+        this.hungerThreshold = hr;
+        
         if(!species.contains(n)) {
             species.add(n);
         }
@@ -247,9 +263,5 @@ public abstract class Species {
 
     public int getAge() {
         return this.age;
-    }
-
-    public String getName() {
-        return this.name;
     }
 }

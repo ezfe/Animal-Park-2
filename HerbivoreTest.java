@@ -17,8 +17,8 @@ public class HerbivoreTest {
     public void testEat() {
         ArrayList<String> energySources = new ArrayList<String>();
         energySources.add("wheat");
-        Species testVegetable = new Vegetable("wheat", "w", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0);
-        Species testAnimal = new Herbivore("bear", "b", energySources, 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0);
+        Species testVegetable = new Vegetable("wheat", "w", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testAnimal = new Herbivore("bear", "b", energySources, 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setPlant((Plant)testVegetable);
         testVegetable.setCell(world.get(2,2));
         world.get(2,2).setAnimal((Animal)testAnimal);
@@ -28,8 +28,8 @@ public class HerbivoreTest {
 
     @Test
     public void testDie() {
-        Species testEnergy = new Herbivore("tiger", "t", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0);
-        Species testAge = new Herbivore("bear", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testEnergy = new Herbivore("tiger", "t", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testAge = new Herbivore("bear", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(1,1).setAnimal((Animal)testEnergy);
         testEnergy.setCell(world.get(1,1));
         world.get(2,2).setAnimal((Animal)testAge);
@@ -40,7 +40,7 @@ public class HerbivoreTest {
 
     @Test
     public void testBirth() {
-        Species testBirth = new Herbivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testBirth = new Herbivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setAnimal((Animal)testBirth);
         testBirth.setCell(world.get(2,2));
         assert testBirth.birth() : "Didn't give birth";
@@ -48,7 +48,7 @@ public class HerbivoreTest {
 
     @Test
     public void testMove() {
-        Species testMove = new Herbivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testMove = new Herbivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setAnimal((Animal)testMove);
         testMove.setCell(world.get(2,2));
         assert testMove.move() : "Didn't move";
@@ -58,8 +58,8 @@ public class HerbivoreTest {
     public void testActivity() {
         ArrayList<String> energySources = new ArrayList<String>();
         energySources.add("wheat");
-        Species testVegetable = new Vegetable("wheat", "w", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0);
-        Species testAnimal = new Herbivore("bear", "b", energySources, 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0);
+        Species testVegetable = new Vegetable("wheat", "w", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testAnimal = new Herbivore("bear", "b", energySources, 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setPlant((Plant)testVegetable);
         testVegetable.setCell(world.get(2,2));
         world.get(2,2).setAnimal((Animal)testAnimal);
@@ -68,8 +68,8 @@ public class HerbivoreTest {
         assert getPopulation() == 1 : "Didn't eat animal";
 
         world = new World(5,5,5);
-        Species testEnergy = new Herbivore("tiger", "t", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0);
-        Species testAge = new Herbivore("bear", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testEnergy = new Herbivore("tiger", "t", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testAge = new Herbivore("bear", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(1,1).setAnimal((Animal)testEnergy);
         testEnergy.setCell(world.get(1,1));
         world.get(2,2).setAnimal((Animal)testAge);
@@ -79,14 +79,14 @@ public class HerbivoreTest {
         assert getPopulation() == 0 : "Didn't die"; //Will fail occasionally depending on the Gaussian distribution
 
         world = new World(5,5,5);
-        Species testBirth = new Herbivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testBirth = new Herbivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setAnimal((Animal)testBirth);
         testBirth.setCell(world.get(2,2));
         testBirth.activity();
         assert getPopulation() == 2 : "Didn't give birth";
 
         world = new World(5,5,5);
-        Species testMove = new Herbivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testMove = new Herbivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setAnimal((Animal)testMove);
         testMove.setCell(world.get(2,2));
         testMove.activity();

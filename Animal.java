@@ -10,8 +10,8 @@ import java.util.*;
 public abstract class Animal extends Species {
     Random generator;
 
-    public Animal(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {    
-        super(n, sym, s, dm, ds, be, me, le, ie, pm, ps);
+    public Animal(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {    
+        super(n, sym, s, dm, ds, be, me, le, ie, pm, ps, mr, dr, hr);
         generator = new Random(Simulation.SEED);
     }
 
@@ -181,15 +181,52 @@ public abstract class Animal extends Species {
      * @return boolean - true if the animal moves, false otherwise
      */
     public boolean move() {
-        for(int i = 0; i < 20; i++) {
-            Cell temp = this.getCell().getAdjacent(generator.nextInt(3)-1,generator.nextInt(3)-1);
-            if(temp != null && !temp.isMountain() && temp.getAnimal() == null) {
+        ArrayList<Cell> visibleCells = cell.getLOSCells((int)detectRange, false);
+        ArrayList<Cell> destinationCells = cell.getLOSCells((int)moveRange, true);
+        PriorityQueue<CellSc> scoredDestinations = new PriorityQueue<>();
+        
+        for(int i = 0; i < destinationCells.size(); i+= 1) {
+            CellSc eval = new CellSc(destinationCells.get(i));
+            
+            if (this.energy < this.hungerThreshold) {
+                double nearestPredator = 10000;
+                double nearestPrey = 10000;
+                for(int j = 0; j < visibleCells.size(); j += 1) {
+                    Cell look = visibleCells.get(j);
+                    Point lloc = look.getLocation();
+                    Point cloc = eval.cell.getLocation();
+                    double distance = Math.sqrt(Math.pow(lloc.x-cloc.x, 2)+Math.pow(lloc.y-cloc.y, 2));
+                    if (this.energySourcesContains(look.getAnimal().getName()) || this.energySourcesContains(look.getPlant().getName())) {
+                        if (nearestPrey > distance) {
+                            nearestPrey = distance;
+                        }
+                    }
+                    if (look.getAnimal().energySourcesContains(this.getName())) {
+                        if (nearestPredator > distance) {
+                            nearestPredator = distance;
+                        }
+                    }
+                }
+                //Smaller is better. If the nearest predator is further than the nearest prey
+                //this will be negative
+                eval.score = (int)(nearestPrey - nearestPredator);
+            } else {
+                eval.score = 0;
+            }
+            
+            scoredDestinations.add(eval);
+        }
+        
+        while(!scoredDestinations.isEmpty()) {
+            Cell temp = scoredDestinations.poll();
+            if (temp != null && !temp.isMountain() && temp.getAnimal() == null) {
                 temp.setAnimal(this);
                 this.getCell().setAnimal(null);
                 this.setCell(temp);
                 return true;
             }
         }
+        
         return false;
     }
 }

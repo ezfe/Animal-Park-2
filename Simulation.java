@@ -145,15 +145,15 @@ public class Simulation {
                     int numToAdd = (int)(popMedian + (popStd * generator.nextGaussian()));
                     for(int i = 0; i < numToAdd; i++) {
                         if(type.equals("carnivore")) {
-                            tempSpecies = new Carnivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Carnivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, moveRange, detectRange, hungerThreshold);
                         } else if(type.equals("herbivore")) {
-                            tempSpecies = new Herbivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Herbivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, moveRange, detectRange, hungerThreshold);
                         } else if(type.equals("omnivore")) {
-                            tempSpecies = new Omnivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Omnivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, moveRange, detectRange, hungerThreshold);
                         } else if(type.equals("vegetable") || type.equals("vegetable")) {
-                            tempSpecies = new Vegetable(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Vegetable(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, moveRange, detectRange, hungerThreshold);
                         } else if(type.equals("fruit")) {
-                            tempSpecies = new Fruit(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Fruit(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, moveRange, detectRange, hungerThreshold);
                         }
                         species.add(tempSpecies);
                     }

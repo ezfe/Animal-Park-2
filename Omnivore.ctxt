@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=n\ sym\ s\ dm\ ds\ be\ me\ le\ ie\ pm\ ps
-comment0.target=Omnivore(java.lang.String,\ java.lang.String,\ java.util.List,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double)
+comment0.params=n\ sym\ s\ dm\ ds\ be\ me\ le\ ie\ pm\ ps\ mr\ dr\ hr
+comment0.target=Omnivore(java.lang.String,\ java.lang.String,\ java.util.List,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double)
 comment1.params=parent
 comment1.target=Omnivore(Species)
 comment2.params=

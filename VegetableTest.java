@@ -18,7 +18,7 @@ public class VegetableTest
     public void testEat() {
         ArrayList<String> energySources = new ArrayList<String>();
         energySources.add("light");
-        Species testVegetable = new Vegetable("broccoli", "b", energySources, 10.0, 1.0, 40.0, 300.0, 10.0, 30.0, 10.0, 1.0);
+        Species testVegetable = new Vegetable("broccoli", "b", energySources, 10.0, 1.0, 40.0, 300.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testVegetable);
         testVegetable.setCell(world.get(2,2));
         double initEnergy = testVegetable.getEnergy();
@@ -27,8 +27,8 @@ public class VegetableTest
 
     @Test
     public void testDie() {
-        Species testEnergy = new Vegetable("carrot", "c", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0);
-        Species testAge = new Vegetable("broccoli", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testEnergy = new Vegetable("carrot", "c", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testAge = new Vegetable("broccoli", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(1,1).setPlant((Plant)testEnergy);
         testEnergy.setCell(world.get(1,1));
         world.get(2,2).setPlant((Plant)testAge);
@@ -39,7 +39,7 @@ public class VegetableTest
 
     @Test
     public void testBirth() {
-        Species testBirth = new Vegetable("broccoli", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testBirth = new Vegetable("broccoli", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testBirth);
         testBirth.setCell(world.get(2,2));
         assert testBirth.birth() : "Didn't give birth";
@@ -47,7 +47,7 @@ public class VegetableTest
 
     @Test
     public void testMove() {
-        Species testMove = new Vegetable("broccoli", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testMove = new Vegetable("broccoli", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testMove);
         testMove.setCell(world.get(2,2));
         assert !testMove.move() : "Did move";
@@ -57,7 +57,7 @@ public class VegetableTest
     public void testActivity() {
         ArrayList<String> energySources = new ArrayList<String>();
         energySources.add("light");
-        Species testVegetable = new Vegetable("broccoli", "g", energySources, 10.0, 1.0, 100.0, 300.0, 0.0, 30.0, 10.0, 1.0);
+        Species testVegetable = new Vegetable("broccoli", "g", energySources, 10.0, 1.0, 100.0, 300.0, 0.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testVegetable);
         testVegetable.setCell(world.get(2,2));
         double initEnergy = testVegetable.getEnergy();
@@ -65,8 +65,8 @@ public class VegetableTest
         assert testVegetable.getEnergy() > initEnergy : "Didn't gain energy";
 
         world = new World(5,5,5);
-        Species testEnergy = new Vegetable("carrot", "c", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0);
-        Species testAge = new Vegetable("broccoli", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testEnergy = new Vegetable("carrot", "c", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testAge = new Vegetable("broccoli", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(1,1).setPlant((Plant)testEnergy);
         testEnergy.setCell(world.get(1,1));
         world.get(2,2).setPlant((Plant)testAge);
@@ -76,14 +76,14 @@ public class VegetableTest
         assert getPopulation() == 0 : "Didn't die"; //Will fail occasionally depending on the Gaussian distribution
 
         world = new World(5,5,5);
-        Species testBirth = new Vegetable("broccoli", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testBirth = new Vegetable("broccoli", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testBirth);
         testBirth.setCell(world.get(2,2));
         testBirth.activity();
         assert getPopulation() == 2 : "Didn't give birth";
 
         world = new World(5,5,5);
-        Species testMove = new Vegetable("broccoli", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0);
+        Species testMove = new Vegetable("broccoli", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testMove);
         testMove.setCell(world.get(2,2));
         testMove.activity();
