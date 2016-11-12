@@ -1,11 +1,9 @@
-size 10 10
-species wheat vegetable h light 300,5,20 10.1,5.1 30 50 0 0 2 0
-light 5
-species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5 5 5 10
-species banana fruit b light 100,10,25 8.9,2.5 35 45 0 0 4 0
+size 20 20
+#species name type symbol srcs popmed/std/initEnergy dthmed/std brthnrg maxnrg mr dr livnrg ht
+light 10
+species wheat vegetable h light 180,5,20 20.1,5.1 10 50 0 0 2 0
+species cow herbivore c wheat,banana 70,3,30 40.3,4.2 10 60 5 5 8 10
+species banana fruit b light 180,5,20 20.1,5.1 10 50 0 0 2 0
 species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 5 5 7 10
 species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 5 5 8 10
-mountain 2,2,5,2
-mountain 5,5,5,2
-mountain 2,2,5,5
-mountain 5,2,1,9
+mountain 2,2,18,18

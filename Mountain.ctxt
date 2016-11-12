@@ -5,4 +5,5 @@ comment1.params=x1\ y1\ x2\ y2
 comment1.target=Mountain(int,\ int,\ int,\ int)
 comment2.params=w
 comment2.target=void\ populate(World)
+comment2.text=\n\ Populate\ a\ world\ with\ this\ mountain\n\ @param\ World\ world\ to\ populate\n
 numComments=3

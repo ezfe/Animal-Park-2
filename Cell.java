@@ -113,6 +113,8 @@ public class Cell {
 
     /**
      * Fetch all cells within a certain range
+     * @param int range to fetch
+     * @param boolean whether animals obstruct
      */
     public ArrayList<Cell> getLOSCells(int range, boolean animalsObstruct) {
         range += 1;

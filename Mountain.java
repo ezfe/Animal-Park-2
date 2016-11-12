@@ -25,6 +25,10 @@ public class Mountain {
         this.y2 = y2;
     }
     
+    /**
+     * Populate a world with this mountain
+     * @param World world to populate
+     */
     public void populate(World w) {
         double x1 = (double)this.x1;
         double x2 = (double)this.x2;

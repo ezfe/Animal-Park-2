@@ -213,6 +213,12 @@ public abstract class Animal extends Species {
             } else {
                 eval.score = 0;
             }
+            
+            scoredDestinations.add(eval);
+        }
+        
+        if (scoredDestinations.isEmpty()) {
+            System.out.println("NO DESTINATIONS");
         }
         
         while(!scoredDestinations.isEmpty()) {

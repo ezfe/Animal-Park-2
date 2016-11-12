@@ -17,8 +17,8 @@ public class Simulation {
 
     public static void main(String[] args) {
         String filePath = "config.txt";
-        int simulationSteps = 1000;
-        SEED = 1;
+        int simulationSteps = 500;
+        SEED = 3;
 
         Simulation sim = new Simulation(filePath, simulationSteps);
         sim.run();

@@ -60,20 +60,4 @@ public class SimulationTest {
         testAnimal.setCell(world.get(3,3));
         assert sim.getPopulationOfWorld() == 2 : "Pop 2";
     }
-    
-    @Test
-    public void testChanges() {
-        sim.initWorld();
-        assert sim.getChangesInPastSteps() == 1 : "Init";
-        World world = new World(5,5,5);
-        sim.setWorld(world);
-        sim = new Simulation("config.txt", 100);
-        Species testPlant = new Vegetable("wheat","w",new TreeSet<String>(),100.0,1.0,10.0,90.0,1.0,50.0,1.0,0.0, 0.0, 0.0, 0.0);
-        world.get(2,2).setPlant((Plant)testPlant);
-        testPlant.setCell(world.get(2,2));
-        for(int i = 0; i < 50; i++) {
-            world.turn();
-        }
-        assert sim.getChangesInPastSteps() > 0 : "50 steps";
-    }
 }
