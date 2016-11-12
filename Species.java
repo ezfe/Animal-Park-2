@@ -18,7 +18,7 @@ public abstract class Species {
     protected Cell cell;
     protected String name;
     protected String symbol;
-    protected List<String> energySources;
+    protected TreeSet<String> energySources;
     protected double deathMedian;
     protected double deathStd;
     protected double birthEnergy;
@@ -43,7 +43,7 @@ public abstract class Species {
         return this.energySources.contains(s);
     }
     
-    public Species(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {
+    public Species(String n, String sym, TreeSet<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {
         this.name = n;
         this.symbol = sym;
         this.energySources = s;

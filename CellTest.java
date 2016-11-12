@@ -15,7 +15,7 @@ public class CellTest {
     {
         world = new World(5,5,5);
         //cell = new Cell(world);
-        testAnimal = new Carnivore("bear", "b", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        testAnimal = new Carnivore("bear", "b", new TreeSet<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
     }
 
     @Test

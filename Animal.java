@@ -10,7 +10,7 @@ import java.util.*;
 public abstract class Animal extends Species {
     Random generator;
 
-    public Animal(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {    
+    public Animal(String n, String sym, TreeSet<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {    
         super(n, sym, s, dm, ds, be, me, le, ie, pm, ps, mr, dr, hr);
         generator = new Random(Simulation.SEED);
     }
@@ -183,7 +183,7 @@ public abstract class Animal extends Species {
     public boolean move() {
         ArrayList<Cell> visibleCells = cell.getLOSCells((int)detectRange, false);
         ArrayList<Cell> destinationCells = cell.getLOSCells((int)moveRange, true);
-        PriorityQueue<CellSc> scoredDestinations = new PriorityQueue<>();
+        PriorityQueue<CellSc> scoredDestinations = new PriorityQueue<>(new CellScComparator());
         
         for(int i = 0; i < destinationCells.size(); i+= 1) {
             CellSc eval = new CellSc(destinationCells.get(i));
@@ -196,12 +196,12 @@ public abstract class Animal extends Species {
                     Point lloc = look.getLocation();
                     Point cloc = eval.cell.getLocation();
                     double distance = Math.sqrt(Math.pow(lloc.x-cloc.x, 2)+Math.pow(lloc.y-cloc.y, 2));
-                    if (this.energySourcesContains(look.getAnimal().getName()) || this.energySourcesContains(look.getPlant().getName())) {
+                    if (look != null && ((look.getAnimal() != null && this.energySourcesContains(look.getAnimal().getName())) || (look.getPlant() != null && this.energySourcesContains(look.getPlant().getName())))) {
                         if (nearestPrey > distance) {
                             nearestPrey = distance;
                         }
                     }
-                    if (look.getAnimal().energySourcesContains(this.getName())) {
+                    if (look != null && look.getAnimal() != null && look.getAnimal().energySourcesContains(this.getName())) {
                         if (nearestPredator > distance) {
                             nearestPredator = distance;
                         }
@@ -213,12 +213,10 @@ public abstract class Animal extends Species {
             } else {
                 eval.score = 0;
             }
-            
-            scoredDestinations.add(eval);
         }
         
         while(!scoredDestinations.isEmpty()) {
-            Cell temp = scoredDestinations.poll();
+            Cell temp = scoredDestinations.poll().cell;
             if (temp != null && !temp.isMountain() && temp.getAnimal() == null) {
                 temp.setAnimal(this);
                 this.getCell().setAnimal(null);

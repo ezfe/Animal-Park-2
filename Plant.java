@@ -11,7 +11,7 @@ public abstract class Plant extends Species {
 
     Random generator;
 
-    public Plant(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {    
+    public Plant(String n, String sym, TreeSet<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {    
         super(n, sym, s, dm, ds, be, me, le, ie, pm, ps, mr, dr,hr);
         generator = new Random(Simulation.SEED);
     }

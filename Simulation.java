@@ -125,7 +125,7 @@ public class Simulation {
                     String symbol = words[3];
 
                     String[] es = words[4].split(",");
-                    List<String> energySources = new ArrayList<String>();
+                    TreeSet<String> energySources = new TreeSet<String>();
                     for(int i = 0; i < es.length; i++) {energySources.add(es[i]);}
 
                     double popMedian = Double.parseDouble(words[5].split(",")[0]);
@@ -172,12 +172,6 @@ public class Simulation {
             world = new World(width,height,light);
             for(int i = 0; i < mountains.size(); i++) {
                 mountains.get(i).populate(world);
-            }
-            
-            world.get(8,2).flag = true;
-            ArrayList<Cell> valids = world.get(8, 2).getLOSCells(10, false);
-            for(int i = 0; i < valids.size(); i++) {
-                valids.get(i).flag = true;
             }
             
             Species.setStaticWorld(world);

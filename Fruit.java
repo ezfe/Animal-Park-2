@@ -8,7 +8,7 @@ import java.util.*;
  * @version 11/02/2016
  */
 public class Fruit extends Plant {
-    public Fruit(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {    
+    public Fruit(String n, String sym, TreeSet<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, double mr, double dr, double hr) {    
         super(n, sym, s, dm, ds, be, me, le, ie, pm, ps, mr, dr, hr);
     }
     

@@ -15,7 +15,7 @@ public class FruitTest {
 
     @Test
     public void testEat() {
-        ArrayList<String> energySources = new ArrayList<String>();
+        TreeSet<String> energySources = new TreeSet<String>();
         energySources.add("light");
         Species testFruit = new Fruit("grape", "g", energySources, 10.0, 1.0, 40.0, 300.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testFruit);
@@ -26,8 +26,8 @@ public class FruitTest {
 
     @Test
     public void testDie() {
-        Species testEnergy = new Fruit("grape", "g", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
-        Species testAge = new Fruit("banana", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testEnergy = new Fruit("grape", "g", new TreeSet<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testAge = new Fruit("banana", "b", new TreeSet<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(1,1).setPlant((Plant)testEnergy);
         testEnergy.setCell(world.get(1,1));
         world.get(2,2).setPlant((Plant)testAge);
@@ -38,7 +38,7 @@ public class FruitTest {
 
     @Test
     public void testBirth() {
-        Species testBirth = new Fruit("banana", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testBirth = new Fruit("banana", "b", new TreeSet<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testBirth);
         testBirth.setCell(world.get(2,2));
         assert testBirth.birth() : "Didn't give birth";
@@ -46,7 +46,7 @@ public class FruitTest {
 
     @Test
     public void testMove() {
-        Species testMove = new Fruit("banana", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testMove = new Fruit("banana", "b", new TreeSet<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testMove);
         testMove.setCell(world.get(2,2));
         assert !testMove.move() : "Did move";
@@ -54,7 +54,7 @@ public class FruitTest {
 
     @Test
     public void testActivity() {
-        ArrayList<String> energySources = new ArrayList<String>();
+        TreeSet<String> energySources = new TreeSet<String>();
         energySources.add("light");
         Species testFruit = new Fruit("grape", "g", energySources, 10.0, 1.0, 100.0, 300.0, 0.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testFruit);
@@ -64,8 +64,8 @@ public class FruitTest {
         assert testFruit.getEnergy() > initEnergy : "Didn't gain energy";
 
         world = new World(5,5,5);
-        Species testEnergy = new Fruit("grape", "g", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
-        Species testAge = new Fruit("banana", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testEnergy = new Fruit("grape", "g", new TreeSet<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testAge = new Fruit("banana", "b", new TreeSet<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(1,1).setPlant((Plant)testEnergy);
         testEnergy.setCell(world.get(1,1));
         world.get(2,2).setPlant((Plant)testAge);
@@ -75,14 +75,14 @@ public class FruitTest {
         assert getPopulation() == 0 : "Didn't die"; //Will fail occasionally depending on the Gaussian distribution
 
         world = new World(5,5,5);
-        Species testBirth = new Fruit("banana", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testBirth = new Fruit("banana", "b", new TreeSet<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testBirth);
         testBirth.setCell(world.get(2,2));
         testBirth.activity();
         assert getPopulation() == 2 : "Didn't give birth";
 
         world = new World(5,5,5);
-        Species testMove = new Fruit("banana", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testMove = new Fruit("banana", "b", new TreeSet<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         world.get(2,2).setPlant((Plant)testMove);
         testMove.setCell(world.get(2,2));
         testMove.activity();

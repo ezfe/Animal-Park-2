@@ -15,9 +15,9 @@ public class OmnivoreTest {
 
     @Test
     public void testEat() {
-        ArrayList<String> energySources = new ArrayList<String>();
+        TreeSet<String> energySources = new TreeSet<String>();
         energySources.add("wheat");
-        Species testVegetable = new Vegetable("wheat", "w", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+        Species testVegetable = new Vegetable("wheat", "w", new TreeSet<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 0.0, 0.0, 0.0);
         Species testAnimal = new Omnivore("bear", "b", energySources, 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setPlant((Plant)testVegetable);
         testVegetable.setCell(world.get(2,2));
@@ -26,9 +26,9 @@ public class OmnivoreTest {
         assert testAnimal.eat() : "Didn't eat plant";
 
         world = new World(5,5,5);
-        energySources = new ArrayList<String>();
+        energySources = new TreeSet<String>();
         energySources.add("rabbit");
-        Species testPrey = new Herbivore("rabbit", "r", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testPrey = new Herbivore("rabbit", "r", new TreeSet<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         testAnimal = new Omnivore("bear", "b", energySources, 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(1,1).setAnimal((Animal)testPrey);
         testPrey.setCell(world.get(1,1));
@@ -39,8 +39,8 @@ public class OmnivoreTest {
 
     @Test
     public void testDie() {
-        Species testEnergy = new Omnivore("tiger", "t", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
-        Species testAge = new Omnivore("bear", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testEnergy = new Omnivore("tiger", "t", new TreeSet<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testAge = new Omnivore("bear", "b", new TreeSet<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(1,1).setAnimal((Animal)testEnergy);
         testEnergy.setCell(world.get(1,1));
         world.get(2,2).setAnimal((Animal)testAge);
@@ -51,7 +51,7 @@ public class OmnivoreTest {
 
     @Test
     public void testBirth() {
-        Species testBirth = new Omnivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testBirth = new Omnivore("bear", "b", new TreeSet<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setAnimal((Animal)testBirth);
         testBirth.setCell(world.get(2,2));
         assert testBirth.birth() : "Didn't give birth";
@@ -59,7 +59,7 @@ public class OmnivoreTest {
 
     @Test
     public void testMove() {
-        Species testMove = new Omnivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testMove = new Omnivore("bear", "b", new TreeSet<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setAnimal((Animal)testMove);
         testMove.setCell(world.get(2,2));
         assert testMove.move() : "Didn't move";
@@ -67,9 +67,9 @@ public class OmnivoreTest {
 
     @Test
     public void testActivity() {
-        ArrayList<String> energySources = new ArrayList<String>();
+        TreeSet<String> energySources = new TreeSet<String>();
         energySources.add("wheat");
-        Species testVegetable = new Vegetable("wheat", "w", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testVegetable = new Vegetable("wheat", "w", new TreeSet<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         Species testAnimal = new Omnivore("bear", "b", energySources, 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setPlant((Plant)testVegetable);
         testVegetable.setCell(world.get(2,2));
@@ -79,9 +79,9 @@ public class OmnivoreTest {
         assert getPopulation() == 1 : "Didn't eat animal";
 
         world = new World(5,5,5);
-        energySources = new ArrayList<String>();
+        energySources = new TreeSet<String>();
         energySources.add("rabbit");
-        Species testPrey = new Herbivore("rabbit", "r", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testPrey = new Herbivore("rabbit", "r", new TreeSet<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         testAnimal = new Omnivore("bear", "b", energySources, 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(1,1).setAnimal((Animal)testPrey);
         testPrey.setCell(world.get(1,1));
@@ -91,8 +91,8 @@ public class OmnivoreTest {
         assert getPopulation() == 1 : "Didn't eat animal";
 
         world = new World(5,5,5);
-        Species testEnergy = new Omnivore("tiger", "t", new ArrayList<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
-        Species testAge = new Omnivore("bear", "b", new ArrayList<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testEnergy = new Omnivore("tiger", "t", new TreeSet<String>(), 10.0, 1.0, 40.0, 30.0, 100.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testAge = new Omnivore("bear", "b", new TreeSet<String>(), 1.0, 0.25, 40.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(1,1).setAnimal((Animal)testEnergy);
         testEnergy.setCell(world.get(1,1));
         world.get(2,2).setAnimal((Animal)testAge);
@@ -102,14 +102,14 @@ public class OmnivoreTest {
         assert getPopulation() == 0 : "Didn't die"; //Will fail occasionally depending on the Gaussian distribution
 
         world = new World(5,5,5);
-        Species testBirth = new Omnivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testBirth = new Omnivore("bear", "b", new TreeSet<String>(), 10.0, 0.25, 5.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setAnimal((Animal)testBirth);
         testBirth.setCell(world.get(2,2));
         testBirth.activity();
         assert getPopulation() == 2 : "Didn't give birth";
 
         world = new World(5,5,5);
-        Species testMove = new Omnivore("bear", "b", new ArrayList<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
+        Species testMove = new Omnivore("bear", "b", new TreeSet<String>(), 10.0, 0.25, 50.0, 30.0, 10.0, 30.0, 10.0, 1.0, 2.0, 4.0, 15.0);
         world.get(2,2).setAnimal((Animal)testMove);
         testMove.setCell(world.get(2,2));
         testMove.activity();
